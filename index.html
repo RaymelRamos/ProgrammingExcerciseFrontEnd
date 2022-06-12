@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="./js/custom.js"></script>
+    <title>Best Vision Exercise</title>
+</head>
+<body onload="onloadPage();">
+    <div class="container-md" style="padding-top: 3%;">
+        <form id="form" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header">
+                    Programming exercise for .NET Back-End Developer candidates
+                    <label id="id_contact" hidden>
+                </div>
+                <div class="card-body">
+                   <div class="row">
+                        <div class="col-md-2">
+                            <img src="./img/avatar.png" id="showImage" style="width: 200px; height: 200px;" class="img-thumbnail" alt="Avatar">
+                        </div>
+                       <div class="col-md-10 col-md-offset-1">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label" for="FirstName">First name</label>
+                                <input type="text" id="FirstName" name="FirstName" class="form-control" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="SecondName">Second name</label>
+                                <input type="text" id="SecondName" name="SecondName" class="form-control" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="DateOfBirth">Date of birth</label>
+                                <input type="date" id="DateOfBirth" name="DateOfBirth" value="1800-01-01" class="form-control" />  
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label" for="PhoneNumbers">Phone numbers (<small class="form-text text-muted"> Separated by comma</small> )</label>
+                                <input type="text" id="PhoneNumbers" name="PhoneNumbers" class="form-control" />
+                               
+                            </div>
+                            <div class="col-md-8">     
+                                <label class="form-label" for="Addresses">Addresses (<small class="form-text text-muted"> Separated by comma</small> )</label>          
+                                <input name="Addresses" type="text" id="Addresses" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="PersonalPhoto" class="form-label">Personal photo</label>
+                                <input name="PersonalPhoto" class="form-control" type="file"  accept="image/*" onchange="readURL(this)" id="PersonalPhoto">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary btn" type="button" onclick="save()">Save</button>
+                                <button class="btn btn-danger btn" type="button" onclick="clearForm()">Cancel</button>
+                            </div>   
+                        </div>
+                       </div>
+                   </div>
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Contact List</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <label for="FilterByName" class="form-label"><b>Filter By Name</b></label>
+                                <input type="text" class="form-control" name="FilterByName" id="FilterByName" placeholder="">
+                              </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="mb-3">
+                                <br>
+                                <input name="" id="FilterByNameBtn" class="btn btn-primary" onclick="filterByName()" type="button" value="Filter">
+                              </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="mb-3">
+                                <label for="FromFilterByAge" class="form-label"><b>Filter By Age</b></label>
+                                <input type="number" class="form-control" name="from" id="FromFilterByAge" placeholder="From">
+                              </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="mb-3">
+                                <label for="ToFilterByAge" class="form-label"><b>&nbsp;</b></label>
+                                <input type="number" class="form-control" name="to" id="ToFilterByAge" placeholder="To">
+                              </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="mb-3">
+                                <br>
+                                <input onclick="filterByAgeRange()" name="" id="FilterByNameBtn" class="btn btn-primary" type="button" value="Filter">
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped table-hover" id="list_contacts">
+                                <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">First & Second names</th>
+                                      <th scope="col">DateOfBirth</th>
+                                      <th scope="col">Addresses</th>
+                                      <th scope="col">PhoneNumbers</th>
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                  </tbody>
+                            </table>
+                              
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <code>Created by: Raymel Ramos</code>
+                </div>
+            </div>
+        </form>  
+    </div>    
+</body>
+</html>

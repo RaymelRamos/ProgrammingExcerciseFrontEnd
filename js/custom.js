@@ -3,8 +3,22 @@ var id_edit_contact = -1;
 
 function onloadPage()
 {
-    $.get(`${BACKEND_ENDPOINT}/contacts`, function(data, status){
-        status === 'success' ? fillTable(data) : fillTable([])
+    $.ajax({
+        url: `${BACKEND_ENDPOINT}/contacts`,
+        processData: false,
+        contentType: false,
+        type: 'GET',
+        success: function(data){
+        clearTable()
+        fillTable(data)
+        clearForm()
+        },
+        error: function(err)
+        {
+            fillTable([])
+            alert("Ups!!! Something has gone wrong. Please check endpoint")
+            console.log(err)
+        }
     });
 }
 
@@ -84,7 +98,7 @@ function create()
       onloadPage()
       clearForm()
     },
-    fail: function(err)
+    error: function(err)
         {
             alert("Ups!!! Something has gone wrong")
             console.log(err)
@@ -108,7 +122,7 @@ function update(index)
           onloadPage()
           clearForm()
         },
-        fail: function(err)
+        error: function(err)
         {
             alert("Ups!!! Something has gone wrong")
             console.log(err)
@@ -129,7 +143,7 @@ function remove(index)
           onloadPage()
           clearForm()
         },
-        fail: function(err)
+        error: function(err)
         {
             alert("Ups!!! Something has gone wrong")
             console.log(err)
@@ -153,7 +167,7 @@ function fillForm(index)
             $('#showImage').attr('src', data.personalPhoto);
             $('#id_contact').val(data.id);
         },
-        fail: function(err)
+        error: function(err)
         {
             alert("Ups!!! Something has gone wrong")
             console.log(err)
@@ -174,7 +188,7 @@ function filterByName()
             clearTable()
             fillTable(data)
             },
-            fail: function(err)
+            error: function(err)
             {
                 alert("Ups!!! Something has gone wrong")
                 console.log(err)
@@ -206,9 +220,9 @@ function filterByAgeRange()
             success: function(data){
             clearTable()
             fillTable(data)
-            cleanForm()
+            clearForm()
             },
-            fail: function(err)
+            error: function(err)
             {
                 alert("Ups!!! Something has gone wrong")
                 console.log(err)
